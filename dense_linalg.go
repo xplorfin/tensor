@@ -55,27 +55,27 @@ func (t *Dense) MatVecMul(other Tensor, opts ...FuncOpt) (retVal *Dense, err err
 
 	// checks that t is mxn matrix
 	m := t.Shape()[0]
-	n := t.Shape()[1]
+	//n := t.Shape()[1]
+	//
+	//// check shape
+	//var odim int
+	//oshape := other.Shape()
+	//switch {
+	//case oshape.IsColVec():
+	//	odim = oshape[0]
+	//case oshape.IsRowVec():
+	//	odim = oshape[1]
+	//case oshape.IsVector():
+	//	odim = oshape[0]
+	//default:
+	//	err = errors.Errorf(shapeMismatch, t.Shape(), other.Shape()) // should be unreachable
+	//	return
+	//}
 
-	// check shape
-	var odim int
-	oshape := other.Shape()
-	switch {
-	case oshape.IsColVec():
-		odim = oshape[0]
-	case oshape.IsRowVec():
-		odim = oshape[1]
-	case oshape.IsVector():
-		odim = oshape[0]
-	default:
-		err = errors.Errorf(shapeMismatch, t.Shape(), other.Shape()) // should be unreachable
-		return
-	}
-
-	if odim != n {
-		err = errors.Errorf(shapeMismatch, n, other.Shape())
-		return
-	}
+	//if odim != n {
+	//	err = errors.Errorf(shapeMismatch, n, other.Shape())
+	//	return
+	//}
 
 	expectedShape := Shape{m}
 

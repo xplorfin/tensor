@@ -1,6 +1,7 @@
 package tensor
 
 import (
+	"fmt"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -137,6 +138,9 @@ func (e StdEng) Dot(x, y Tensor, opts ...FuncOpt) (retVal Tensor, err error) {
 		err = errors.Wrapf(err, opFail, "Dot")
 		return
 	}
+
+	fmt.Println(a)
+	fmt.Println(b)
 
 	fo := ParseFuncOpts(opts...)
 
@@ -639,9 +643,9 @@ func (e StdEng) checkThreeFloatTensors(a, b, ret Tensor) (ad, bd, retVal DenseTe
 		return nil, nil, nil, errors.Wrap(err, "checkThreeTensors: ret is not accessible")
 	}
 
-	if a.Dtype() != b.Dtype() || b.Dtype() != ret.Dtype() {
-		return nil, nil, nil, errors.New("Expected a and b and retVal all to have the same Dtype")
-	}
+	//if a.Dtype() != b.Dtype() || b.Dtype() != ret.Dtype() {
+	//	return nil, nil, nil, errors.New("Expected a and b and retVal all to have the same Dtype")
+	//}
 
 	if ad, err = getFloatDenseTensor(a); err != nil {
 		return nil, nil, nil, errors.Wrap(err, "checkTwoTensors expects a to be be a DenseTensor")

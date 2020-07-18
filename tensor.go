@@ -127,10 +127,10 @@ func getFloatDenseTensor(t Tensor) (retVal DenseTensor, err error) {
 	if t == nil {
 		return
 	}
-	if err = typeclassCheck(t.Dtype(), floatTypes); err != nil {
-		err = errors.Wrapf(err, "getFloatDense only handles floats. Got %v instead", t.Dtype())
-		return
-	}
+	//if err = typeclassCheck(t.Dtype(), floatTypes); err != nil {
+	//	err = errors.Wrapf(err, "getFloatDense only handles floats. Got %v instead", t.Dtype())
+	//	return
+	//}
 
 	if retVal, err = getDenseTensor(t); err != nil {
 		err = errors.Wrapf(err, opFail, "getFloatDense")
